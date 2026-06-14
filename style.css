@@ -172,6 +172,37 @@ body {
   animation: shake 0.4s ease;
 }
 
+.exit-btn-lock {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.exit-btn-lock:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ff6b6b;
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: translateY(-1px);
+}
+
+.exit-btn-lock:active {
+  transform: translateY(0);
+}
+
 /* ============================================================
    LAYOUT PRINCIPAL
    ============================================================ */
