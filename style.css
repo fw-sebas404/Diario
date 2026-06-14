@@ -121,26 +121,49 @@ body {
 .unlock-btn {
   width: 100%;
   padding: 14px;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
   color: #fff;
   border: none;
   border-radius: var(--radius-sm);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   font-family: var(--font-body);
   cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.unlock-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: 0.5s;
 }
 
 .unlock-btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, var(--accent-hover) 0%, #ee5253 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+}
+
+.unlock-btn:hover::after {
+  left: 100%;
 }
 
 .unlock-btn:active {
   transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(233, 69, 96, 0.3);
 }
+
+
 
 .error-msg {
   margin-top: 16px;
