@@ -39,6 +39,7 @@ const newEntryBtn     = document.getElementById("newEntryBtn");
 const newEntryBtnMain = document.getElementById("newEntryBtnMain");
 const lockBtn         = document.getElementById("lockBtn");
 const exitBtn         = document.getElementById("exitBtn");
+const exitBtnLock     = document.getElementById("exitBtnLock");
 const sidebarToggle   = document.getElementById("sidebarToggle");
 const sidebar         = document.getElementById("sidebar");
 const searchInput     = document.getElementById("searchInput");
@@ -197,20 +198,21 @@ function lockApp() {
   location.reload();
 }
 
+const closeApp = () => {
+  window.close();
+  // Fallback por si window.close() es bloqueado por el navegador
+  setTimeout(() => {
+    alert("Para salir, cierra esta pestaña del navegador.");
+  }, 300);
+};
+
 unlockBtn.addEventListener("click", unlock);
 passwordInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") unlock();
 });
 lockBtn.addEventListener("click", lockApp);
-exitBtn.addEventListener("click", () => {
-  if (confirm("¿Seguro que quieres salir y cerrar el diario?")) {
-    window.close();
-    // Fallback por si window.close() es bloqueado por el navegador
-    setTimeout(() => {
-      alert("Para salir, cierra esta pestaña del navegador.");
-    }, 500);
-  }
-});
+exitBtn.addEventListener("click", closeApp);
+exitBtnLock.addEventListener("click", closeApp);
 
 // ============================================================
 //  INICIALIZACIÓN
