@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Diario Personal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== PANTALLA DE CLAVE ===== -->
+  <div id="lockScreen" class="lock-screen">
+    <div class="lock-card">
+      <div class="lock-icon">🔒</div>
+      <h1 class="lock-title">Mi Diario Personal</h1>
+      <p class="lock-subtitle">Ingresa tu clave para continuar</p>
+      <div class="input-group">
+        <input
+          type="password"
+          id="passwordInput"
+          class="password-input"
+          placeholder="Clave de acceso"
+          maxlength="20"
+          autocomplete="off"
+        />
+        <button id="unlockBtn" class="unlock-btn">Entrar</button>
+      </div>
+      <p id="errorMsg" class="error-msg hidden">Clave incorrecta. Intenta de nuevo.</p>
+    </div>
+  </div>
+
+  <!-- ===== APLICACIÓN PRINCIPAL ===== -->
+  <div id="app" class="app hidden">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">📖 Mi Diario</h2>
+        <button id="newEntryBtn" class="new-entry-btn">+ Nueva entrada</button>
+      </div>
+      <div class="sidebar-search">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar entradas..." />
+      </div>
+      <ul id="entriesList" class="entries-list">
+        <li class="empty-state">No hay entradas aún.<br/>¡Crea tu primera!</li>
+      </ul>
+      <div class="sidebar-footer">
+        <button id="lockBtn" class="lock-app-btn">🔒 Bloquear</button>
+      </div>
+    </aside>
+
+    <!-- Toggle sidebar (mobile) -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <!-- Editor principal -->
+    <main class="editor-area" id="editorArea">
+
+      <!-- Estado vacío -->
+      <div id="emptyEditor" class="empty-editor">
+        <div class="empty-icon">✍️</div>
+        <h2>Selecciona una entrada o crea una nueva</h2>
+        <p>Tus pensamientos quedan guardados de forma segura en la nube.</p>
+        <button id="newEntryBtnMain" class="new-entry-btn-main">+ Nueva entrada</button>
+      </div>
+
+      <!-- Formulario de edición -->
+      <div id="entryEditor" class="entry-editor hidden">
+        <div class="editor-toolbar">
+          <div class="entry-meta" id="entryMeta"></div>
+          <div class="toolbar-actions">
+            <button id="saveBtn" class="save-btn">💾 Guardar</button>
+            <button id="deleteBtn" class="delete-btn">🗑️ Eliminar</button>
+          </div>
+        </div>
+        <input
+          type="text"
+          id="entryTitle"
+          class="entry-title-input"
+          placeholder="Título de la entrada..."
+          maxlength="100"
+        />
+        <textarea
+          id="entryContent"
+          class="entry-content-input"
+          placeholder="Escribe aquí tus pensamientos, ideas, recuerdos..."
+        ></textarea>
+        <div id="saveStatus" class="save-status"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Modal de confirmación de eliminación -->
+  <div id="deleteModal" class="modal hidden">
+    <div class="modal-card">
+      <h3>¿Eliminar esta entrada?</h3>
+      <p>Esta acción no se puede deshacer.</p>
+      <div class="modal-actions">
+        <button id="confirmDelete" class="btn-danger">Eliminar</button>
+        <button id="cancelDelete" class="btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Configuración privada (config.js no está en el repositorio) -->
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
